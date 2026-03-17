@@ -13,12 +13,21 @@ const App: React.FC = () => {
     activeConversationId: INITIAL_CONVERSATIONS[0].id,
     isSettingsOpen: false,
     isCreateGroupOpen: false,
-    isLoggedIn: false
+    isLoggedIn: false,
+    theme: 'dark'
   });
 
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (state.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [state.theme]);
 
   const activeConversation = state.conversations.find(c => c.id === state.activeConversationId);
   const otherParticipant = activeConversation?.participants[0];
@@ -124,7 +133,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="glass-effect rounded-xl p-8 shadow-2xl border border-primary/20">
-            <div className="flex mb-8 bg-slate-800/50 p-1 rounded-lg">
+            <div className="flex mb-8 bg-surface-dark/50 p-1 rounded-lg">
               <button className="flex-1 py-2 text-sm font-semibold rounded-md bg-primary text-white shadow-sm transition-all">Login</button>
               <button className="flex-1 py-2 text-sm font-semibold rounded-md text-slate-400 hover:text-slate-200 transition-all">Sign Up</button>
             </div>
@@ -134,7 +143,7 @@ const App: React.FC = () => {
                 <label className="block text-sm font-medium text-slate-300 mb-1.5 ml-1">Email Address</label>
                 <div className="relative">
                   <span className="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">alternate_email</span>
-                  <input className="w-full pl-11 pr-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none text-white placeholder:text-slate-600" defaultValue="name@example.com" />
+                  <input className="w-full pl-11 pr-4 py-3 bg-background-dark/50 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none text-white placeholder:text-slate-600" defaultValue="name@example.com" />
                 </div>
               </div>
               <div>
@@ -144,7 +153,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="relative">
                   <span className="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">lock_open</span>
-                  <input className="w-full pl-11 pr-12 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none text-white placeholder:text-slate-600" type="password" defaultValue="password123" />
+                  <input className="w-full pl-11 pr-12 py-3 bg-background-dark/50 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none text-white placeholder:text-slate-600" type="password" defaultValue="password123" />
                   <button className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-primary transition-colors">
                     <span className="material-icons-round text-xl">visibility</span>
                   </button>
@@ -152,7 +161,7 @@ const App: React.FC = () => {
               </div>
 
               <div className="flex items-center ml-1">
-                <input className="w-4 h-4 rounded border-slate-700 text-primary focus:ring-primary bg-transparent cursor-pointer" id="remember" type="checkbox" />
+                <input className="w-4 h-4 rounded border-border-dark text-primary focus:ring-primary bg-transparent cursor-pointer" id="remember" type="checkbox" />
                 <label className="ml-2 text-sm text-slate-400 cursor-pointer" htmlFor="remember">Stay logged in for 30 days</label>
               </div>
 
@@ -167,19 +176,19 @@ const App: React.FC = () => {
 
             <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-700/50"></div>
+                <div className="w-full border-t border-border-dark"></div>
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-[#15272c] px-3 text-slate-500 font-semibold tracking-wider">Or continue with</span>
+                <span className="bg-background-dark px-3 text-slate-500 font-semibold tracking-wider">Or continue with</span>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <button className="flex items-center justify-center py-2.5 px-4 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 hover:bg-slate-800 transition-all">
+              <button className="flex items-center justify-center py-2.5 px-4 rounded-lg bg-surface-dark/50 border border-border-dark text-slate-300 hover:bg-surface-dark transition-all">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuTSoHytrUMzT3br_KWIHtkmipKX8Aabmdd7pS6DLtWNm1iNPN9ISjjC0qgI2_KnRmxAlKJHf5-7MYvgWYLwGLiUEh5s-dsNVc781CYlPqf_mGyjXlTAFfU8AfxqDsBA8vYwBrUD4C48-6ME6-I5J3XrWMMXhOnvNe8YGaChe4B36iy_ev1MDT7qFBAnBB33sGwhjKi5flDvTCTVhyvtBOL7qSDQI1wh3rKRv07oI8UwKe1N8w9ujHncyoEXRW0PmZ_XVb2V3ONkM" alt="G" className="w-5 h-5 mr-2" />
                 <span className="text-sm font-semibold">Google</span>
               </button>
-              <button className="flex items-center justify-center py-2.5 px-4 rounded-lg bg-slate-800/50 border border-slate-700/50 text-slate-300 hover:bg-slate-800 transition-all">
+              <button className="flex items-center justify-center py-2.5 px-4 rounded-lg bg-surface-dark/50 border border-border-dark text-slate-300 hover:bg-surface-dark transition-all">
                 <span className="material-icons-round text-xl mr-2">apple</span>
                 <span className="text-sm font-semibold">Apple</span>
               </button>
@@ -206,12 +215,21 @@ const App: React.FC = () => {
               </div>
               <h1 className="text-xl font-bold tracking-tight text-white">NexusChat</h1>
             </div>
-            <button 
-              onClick={() => setState(prev => ({ ...prev, isSettingsOpen: true }))}
-              className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
-            >
-              <span className="material-icons-round">edit_square</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={() => setState(prev => ({ ...prev, theme: prev.theme === 'dark' ? 'light' : 'dark' }))}
+                className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+                title={`Switch to ${state.theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                <span className="material-icons-round">{state.theme === 'dark' ? 'light_mode' : 'dark_mode'}</span>
+              </button>
+              <button 
+                onClick={() => setState(prev => ({ ...prev, isSettingsOpen: true }))}
+                className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+              >
+                <span className="material-icons-round">edit_square</span>
+              </button>
+            </div>
           </div>
           <div className="relative group">
             <span className="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-primary text-lg">search</span>
@@ -287,6 +305,13 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => setState(prev => ({ ...prev, theme: prev.theme === 'dark' ? 'light' : 'dark' }))}
+                  className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-dark text-slate-400 transition-colors"
+                  title={`Switch to ${state.theme === 'dark' ? 'light' : 'dark'} mode`}
+                >
+                  <span className="material-icons-round">{state.theme === 'dark' ? 'light_mode' : 'dark_mode'}</span>
+                </button>
                 <button className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-dark text-slate-400 transition-colors">
                   <span className="material-icons-round">call</span>
                 </button>

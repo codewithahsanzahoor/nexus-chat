@@ -35,4 +35,5 @@ export interface AppState {
   isSettingsOpen: boolean;
   isCreateGroupOpen: boolean;
   isLoggedIn: boolean;
+  theme: 'light' | 'dark';
 }

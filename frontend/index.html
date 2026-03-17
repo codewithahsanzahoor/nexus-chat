@@ -16,9 +16,9 @@
           colors: {
             "primary": "#0db9f2",
             "accent-purple": "#a855f7",
-            "background-dark": "#101e22",
-            "surface-dark": "#162529",
-            "border-dark": "#1f3338",
+            "background-dark": "var(--bg-primary)",
+            "surface-dark": "var(--bg-secondary)",
+            "border-dark": "var(--border-color)",
           },
           fontFamily: {
             "display": ["Plus Jakarta Sans", "sans-serif"]
@@ -28,35 +28,53 @@
     }
   </script>
   <style>
+    :root {
+      --bg-primary: #101e22;
+      --bg-secondary: #162529;
+      --border-color: #1f3338;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-on-primary: #ffffff;
+      --glass-bg: rgba(22, 37, 41, 0.7);
+    }
+
+    html:not(.dark) {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --border-color: #e2e8f0;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-on-primary: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #101e22;
-      color: #f1f5f9;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    ::-webkit-scrollbar {
-      width: 4px;
+    
+    /* Global text color overrides for light mode */
+    html:not(.dark) .text-white:not(.bg-primary *):not(.bg-accent-purple *) { 
+      color: var(--text-primary) !important; 
     }
-    ::-webkit-scrollbar-track {
-      background: transparent;
+    html:not(.dark) .text-slate-200 { color: var(--text-primary) !important; }
+    html:not(.dark) .text-slate-300 { color: #475569 !important; }
+    html:not(.dark) .text-slate-400 { color: var(--text-secondary) !important; }
+    html:not(.dark) .text-slate-500 { color: #94a3b8 !important; }
+    
+    /* Ensure primary buttons and accent bubbles keep white text */
+    .bg-primary, .bg-accent-purple {
+      color: var(--text-on-primary) !important;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1f3338;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #0db9f2;
-    }
-    .neon-glow {
-      box-shadow: 0 0 15px rgba(13, 185, 242, 0.3);
-    }
-    .neon-purple-glow {
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
-    }
-    .glass-effect {
-      background: rgba(22, 37, 41, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
+
+    /* Background and border overrides */
+    html:not(.dark) .bg-background-dark\/50 { background-color: rgba(241, 245, 249, 0.5) !important; }
+    html:not(.dark) .bg-surface-dark\/50 { background-color: rgba(248, 250, 252, 0.5) !important; }
+    html:not(.dark) .hover\:bg-background-dark\/50:hover { background-color: rgba(241, 245, 249, 0.5) !important; }
+    html:not(.dark) .hover\:bg-surface-dark:hover { background-color: #f1f5f9 !important; }
+    html:not(.dark) .bg-surface-dark\/80 { background-color: rgba(241, 245, 249, 0.8) !important; }
   </style>
 <script type="importmap">
 {
