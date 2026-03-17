@@ -1,0 +1,8 @@
+{
+  "name": "Nexus Chat",
+  "description": "A high-performance, real-time messaging application with a sleek neon-dark aesthetic, featuring AI-powered conversations, group management, and detailed user settings.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
