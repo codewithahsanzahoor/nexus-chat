@@ -58,10 +58,10 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ friends, onClose, o
             <div className="h-64 overflow-y-auto pr-2 space-y-2">
               {friends.map(friend => (
                 <div 
-                  key={friend.id}
-                  onClick={() => toggleMember(friend.id)}
+                  key={friend._id}
+                  onClick={() => toggleMember(friend._id)}
                   className={`flex items-center p-3 rounded-lg border cursor-pointer transition-all ${
-                    selectedMembers.includes(friend.id) 
+                    selectedMembers.includes(friend._id) 
                       ? 'border-primary/30 bg-primary/5' 
                       : 'border-transparent hover:bg-white/5'
                   }`}
@@ -74,9 +74,9 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ friends, onClose, o
                     </p>
                   </div>
                   <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-                    selectedMembers.includes(friend.id) ? 'bg-primary border-primary text-white' : 'border-slate-700'
+                    selectedMembers.includes(friend._id) ? 'bg-primary border-primary text-white' : 'border-slate-700'
                   }`}>
-                    {selectedMembers.includes(friend.id) && <span className="material-icons-round text-xs font-bold">check</span>}
+                    {selectedMembers.includes(friend._id) && <span className="material-icons-round text-xs font-bold">check</span>}
                   </div>
                 </div>
               ))}
