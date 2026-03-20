@@ -2,7 +2,7 @@
 import { User, Conversation } from './types';
 
 export const MOCK_CURRENT_USER: User = {
-  id: 'me',
+  _id: 'me',
   name: 'Alex Rivera',
   avatar: 'https://picsum.photos/seed/alex/200',
   status: 'online',
@@ -12,20 +12,20 @@ export const MOCK_CURRENT_USER: User = {
 
 export const MOCK_USERS: User[] = [
   {
-    id: 'user1',
+    _id: 'user1',
     name: 'Sarah Jenkins',
     avatar: 'https://picsum.photos/seed/sarah/200',
     status: 'offline',
     lastSeen: '12:20 PM'
   },
   {
-    id: 'user2',
+    _id: 'user2',
     name: 'Jordan Vance',
     avatar: 'https://picsum.photos/seed/jordan/200',
     status: 'online'
   },
   {
-    id: 'user3',
+    _id: 'user3',
     name: 'Nexus Bot',
     avatar: 'https://picsum.photos/seed/bot/200',
     status: 'online',
@@ -35,12 +35,12 @@ export const MOCK_USERS: User[] = [
 
 export const INITIAL_CONVERSATIONS: Conversation[] = [
   {
-    id: 'conv1',
+    _id: 'conv1',
     type: 'direct',
     participants: [MOCK_USERS[0]],
     messages: [
       {
-        id: 'm1',
+        _id: 'm1',
         senderId: 'user1',
         text: "Let's sync up on the PR review tomorrow.",
         timestamp: '12:20 PM',
@@ -51,12 +51,12 @@ export const INITIAL_CONVERSATIONS: Conversation[] = [
     lastMessageTime: '12:20 PM'
   },
   {
-    id: 'conv2',
+    _id: 'conv2',
     type: 'direct',
     participants: [MOCK_USERS[1]],
     messages: [
       {
-        id: 'm2',
+        _id: 'm2',
         senderId: 'user2',
         text: 'Attached the updated UI designs for the dashboard.',
         timestamp: 'Yesterday',
@@ -67,12 +67,12 @@ export const INITIAL_CONVERSATIONS: Conversation[] = [
     lastMessageTime: 'Yesterday'
   },
   {
-    id: 'conv3',
+    _id: 'conv3',
     type: 'direct',
     participants: [MOCK_USERS[2]],
     messages: [
       {
-        id: 'm3',
+        _id: 'm3',
         senderId: 'user3',
         text: 'Hello! I am Nexus Bot. How can I help you today?',
         timestamp: '9:00 AM',
