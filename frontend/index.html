@@ -75,6 +75,43 @@
     html:not(.dark) .hover\:bg-background-dark\/50:hover { background-color: rgba(241, 245, 249, 0.5) !important; }
     html:not(.dark) .hover\:bg-surface-dark:hover { background-color: #f1f5f9 !important; }
     html:not(.dark) .bg-surface-dark\/80 { background-color: rgba(241, 245, 249, 0.8) !important; }
+
+    /* Glass Effect Definition */
+    .glass-effect {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Neon Glows */
+    .neon-glow {
+      box-shadow: 0 0 15px rgba(13, 185, 242, 0.3);
+    }
+    .neon-purple-glow {
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Input focus and visibility fixes */
+    input {
+      color: var(--text-primary) !important;
+      background-color: var(--bg-primary) !important;
+    }
+    
+    input::placeholder {
+      color: var(--text-secondary) !important;
+      opacity: 0.6;
+    }
+
+    /* Fix for browser autofill white background */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active{
+        -webkit-box-shadow: 0 0 0 30px var(--bg-primary) inset !important;
+        -webkit-text-fill-color: var(--text-primary) !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
   </style>
 <script type="importmap">
 {
