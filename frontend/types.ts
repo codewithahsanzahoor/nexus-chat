@@ -2,8 +2,9 @@
 export type UserStatus = 'online' | 'offline' | 'typing';
 
 export interface User {
-  id: string;
+  _id: string;
   name: string;
+  email?: string;
   avatar: string;
   status: UserStatus;
   lastSeen?: string;
@@ -12,7 +13,8 @@ export interface User {
 }
 
 export interface Message {
-  id: string;
+  _id: string;
+  conversationId?: string;
   senderId: string;
   text: string;
   timestamp: string;
@@ -20,20 +22,24 @@ export interface Message {
 }
 
 export interface Conversation {
-  id: string;
+  _id: string;
   type: 'direct' | 'group';
   participants: User[];
   messages: Message[];
   unreadCount: number;
   lastMessageTime: string;
+  groupName?: string;
 }
 
 export interface AppState {
-  currentUser: User;
+  currentUser: User | null;
   conversations: Conversation[];
   activeConversationId: string | null;
   isSettingsOpen: boolean;
   isCreateGroupOpen: boolean;
   isLoggedIn: boolean;
   theme: 'light' | 'dark';
+  token: string | null;
+  isLoading: boolean;
+  error: string | null;
 }
